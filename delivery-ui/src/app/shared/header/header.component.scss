@@ -1,0 +1,63 @@
+@import 'src/app/core/theme/variables';
+
+.header {
+    background-color: $delivery-dark-gray;
+    color: $delivery-white;
+    height: $delivery-header-height;
+    display: flex;
+
+    &__brand {
+        margin: 0 30px;
+        font-size: $delivery-brand;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    &__navbar {
+        &Item {
+            background-color: $delivery-green;
+            font-size: $delivery-text;
+            white-space: nowrap;
+            height: 20px;
+            display: flex;
+            align-items: center;
+
+            &__center {
+                @extend .header__navbarItem;
+                padding: 0 5px;
+
+                &--selected {
+                    @extend .header__navbarItem__center;
+                    background-color: $delivery-gray;
+                    color: $delivery-dark-gray;
+                }
+            }
+
+            &__left {
+                @extend .header__navbarItem;
+                border-radius: 10px 0 0 10px;
+                padding: 0 5px 0 10px;
+
+                &--selected {
+                    @extend .header__navbarItem__left;
+                    background-color: $delivery-gray;
+                    color: $delivery-dark-gray;
+                }
+            }
+
+            &__right {
+                @extend .header__navbarItem;
+                margin-right: 30px;
+                border-radius: 0 10px 10px 0;
+                padding: 0 10px 0 5px;
+
+                &--selected {
+                    @extend .header__navbarItem__right;
+                    background-color: $delivery-gray;
+                    color: $delivery-dark-gray;
+                }
+            }
+        }
+    }
+}
