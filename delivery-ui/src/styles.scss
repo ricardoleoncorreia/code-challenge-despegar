@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/scss/bootstrap';
+@import 'src/app/core/theme/variables';
+
+html, body {
+    font-size: $delivery-text;
+    margin: 0;
+    height: 100%;
+}
