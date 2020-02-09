@@ -1,0 +1,13 @@
+{
+  "name": "delivery-api",
+  "version": "1.0.0",
+  "description": "Server dependencies",
+  "main": "index.js",
+  "author": "Ricardo Leon",
+  "license": "ISC",
+  "dependencies": {
+    "@types/faker": "^4.1.9",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.15"
+  }
+}
