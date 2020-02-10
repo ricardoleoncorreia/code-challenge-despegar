@@ -1,8 +1,23 @@
 <header class="header d-flex">
     <p class="header__brand">Delivery Online</p>
     <nav class="d-flex align-items-center">
-        <div class="header__navbarItem__left--selected">1 - Elegi tu delivery</div>
-        <div class="header__navbarItem__center">2 - Realiza tu pedido</div>
-        <div class="header__navbarItem__right">3 - Completa tus datos</div>
+
+        <div
+            [ngClass]="{
+                'header__navbarItem__left': (currentPhase | async) !== 1,
+                'header__navbarItem__left--selected': (currentPhase | async) === 1
+            }">1 - Elegi tu delivery</div>
+        
+        <div
+            [ngClass]="{
+                'header__navbarItem__center': (currentPhase | async) !== 2,
+                'header__navbarItem__center--selected': (currentPhase | async) === 2
+            }">2 - Realiza tu pedido</div>
+        
+        <div
+            [ngClass]="{
+                'header__navbarItem__right': (currentPhase | async) !== 3,
+                'header__navbarItem__right--selected': (currentPhase | async) === 3
+            }">3 - Completa tus datos</div>
     </nav>
 </header>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Restaurant } from 'src/app/delivery.namespace';
 
 @Component({
@@ -9,8 +9,9 @@ import { Restaurant } from 'src/app/delivery.namespace';
 export class RestaurantCardComponent {
 
   @Input() restaurant: Restaurant;
+  @Output() navigate: EventEmitter<void> = new EventEmitter();
 
-  navigateToPhase2(restaurantId: number): void {
-    console.log('restaurant: ', restaurantId);
+  navigateToPhase2(): void {
+    this.navigate.emit();
   }
 }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { DeliveryStateService } from 'src/app/core/services/delivery-state.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'delivery-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  get currentPhase(): Subject<number> {
+    return this.deliveryStateService.currentPhase$;
+  };
 
-  ngOnInit(): void {
-  }
+  constructor(public deliveryStateService: DeliveryStateService) { }
 
 }
