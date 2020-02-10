@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
+import { Restaurant } from 'src/app/delivery.namespace';
 
 @Component({
   selector: 'delivery-restaurants',
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants$: Observable<Delivery.Restaurant[]>;
+  restaurants$: Observable<Restaurant[]>;
 
   constructor(private apiService: ApiService) { }
 
