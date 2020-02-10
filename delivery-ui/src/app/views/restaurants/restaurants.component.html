@@ -1,15 +1,27 @@
 <h2 class="filter__title">Filtros:</h2>
-<section class="filter__form">
+<form class="filter__form">
     <section class="d-inline-block filter__form__name">
-        <span>Nombre:</span><br>
-        <input type="text" placeholder="Nombre">
+        <label for="name" class="mb-0">Nombre:</label><br>
+        <input
+            type="text"
+            placeholder="Nombre"
+            id="name"
+            [(ngModel)]="filterTerms.name"
+            name="name"
+            (ngModelChange)=filterList()>
     </section>
 
     <section class="d-inline-block">
-        <span>Descripción:</span><br>
-        <input type="text" placeholder="Descripción">
+        <label for="description" class="mb-0">Descripción:</label><br>
+        <input
+            type="text"
+            placeholder="Descripción"
+            id="description"
+            [(ngModel)]="filterTerms.description"
+            name="description"
+            (ngModelChange)=filterList()>
     </section>
-</section>
+</form>
 <br>
 <h2 class="filter__title">Deliveries:</h2>
 <div class="container">
