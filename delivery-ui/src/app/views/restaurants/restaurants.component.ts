@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'delivery-restaurants',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantsComponent implements OnInit {
 
-  constructor() { }
+  restaurants$: Observable<Delivery.Restaurant[]>;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.restaurants$ = this.apiService.getRestaurants();
   }
 
 }

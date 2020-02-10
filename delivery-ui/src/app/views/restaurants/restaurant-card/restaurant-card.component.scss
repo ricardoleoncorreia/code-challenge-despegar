@@ -1,0 +1,27 @@
+@import 'src/app/core/theme/variables';
+
+.card {
+    border: $delivery-dark-gray solid 2px;
+    margin-bottom: 20px;
+
+    &__title {
+        background-color: $delivery-blue;
+        color: $delivery-white;
+        border-bottom: $delivery-dark-gray solid 1px;
+        padding: 2px 5px;
+    }
+
+    &__content {
+        background-color: $delivery-gray;
+        padding: 2px 5px;
+
+        &__text {
+            color: $delivery-dark-gray;
+            margin: 0;
+        }
+
+        &__link {
+            color: $delivery-green;
+        }
+    }
+}

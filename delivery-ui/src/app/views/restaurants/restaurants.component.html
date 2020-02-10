@@ -1,1 +1,23 @@
-<p>restaurants works!</p>
+<h2 class="filter__title">Filtros:</h2>
+<section class="filter__form">
+    <section class="d-inline-block filter__form__name">
+        <span>Nombre:</span><br>
+        <input type="text" placeholder="Nombre">
+    </section>
+
+    <section class="d-inline-block">
+        <span>Descripción:</span><br>
+        <input type="text" placeholder="Descripción">
+    </section>
+</section>
+<br>
+<h2 class="filter__title">Deliveries:</h2>
+<div class="container">
+    <section class="row">
+        <delivery-restaurant-card
+            *ngFor="let restaurant of restaurants$ | async"
+            [restaurant]="restaurant"
+            class="col-3">
+        </delivery-restaurant-card>
+    </section>
+</div>

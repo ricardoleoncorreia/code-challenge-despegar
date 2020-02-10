@@ -1,0 +1,19 @@
+@import 'src/app/core/theme/variables';
+
+.filter {
+    &__title {
+        font-size: $delivery-title;
+        padding-top: 20px;
+        font-weight: bold;
+    }
+
+    &__form {
+        background-color: $delivery-gray;
+        padding: 10px 35px 15px 35px;
+        border-radius: 5px;
+
+        &__name {
+            padding-right: 70px;
+        }
+    }
+}
