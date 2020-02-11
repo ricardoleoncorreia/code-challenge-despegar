@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { RestaurantCardComponent } from './views/restaurants/restaurant-card/restaurant-card.component';
+import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { RestaurantCardComponent } from './views/restaurants/restaurant-card/res
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpHeadersInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
