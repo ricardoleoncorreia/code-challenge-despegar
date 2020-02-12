@@ -31,6 +31,7 @@ class SamplesBuilder {
                 sectionId,
                 restaurantId,
                 name: `Producto ${n}`,
+                detail: `Detalle ${n}`,
                 price
             };
         };

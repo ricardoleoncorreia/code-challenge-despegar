@@ -14,6 +14,7 @@ export interface Product {
     sectionId: number;
     restaurantId: number;
     name: string;
+    detail: string;
     price: number;
     quantity?: number;
 }
