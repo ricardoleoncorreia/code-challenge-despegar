@@ -15,7 +15,7 @@
                             <td>{{ product.name }}</td>
                             <td>{{ product.price | currency }}</td>
                             <td>
-                                <fa-icon class="list__products__search" [icon]="faSearch"></fa-icon>
+                                <fa-icon tooltip="{{ product.detail }}" class="list__products__search" [icon]="faSearch"></fa-icon>
                                 <fa-icon class="list__products__add" (click)="addProduct(product)" [icon]="faPlusCircle"></fa-icon>
                             </td>
                         </tr>

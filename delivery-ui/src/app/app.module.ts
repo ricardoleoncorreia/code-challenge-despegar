@@ -13,6 +13,7 @@ import { RestaurantCardComponent } from './views/restaurants/restaurant-card/res
 import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     AppRoutingModule,
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     FontAwesomeModule
   ],
   providers: [
