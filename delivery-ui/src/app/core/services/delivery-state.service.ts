@@ -9,7 +9,6 @@ export class DeliveryStateService {
 
   currentPhase$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
   selectedRestaurant$: BehaviorSubject<Restaurant> = new BehaviorSubject<Restaurant>(null);
-  selectedProducts$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   deliveryInfo$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   setPhaseTo(phase: number): void {

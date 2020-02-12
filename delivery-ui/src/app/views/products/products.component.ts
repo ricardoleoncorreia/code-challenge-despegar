@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryStateService } from 'src/app/core/services/delivery-state.service';
 import { Observable } from 'rxjs';
-import { Product, Section } from 'src/app/delivery.namespace';
+import { Product, Section, Contact } from 'src/app/delivery.namespace';
 import { ApiService } from 'src/app/core/services/api.service';
 import { concatMap, map } from 'rxjs/operators';
 import { NavigationService } from 'src/app/core/services/navigation.service';
@@ -18,17 +18,37 @@ export class ProductsComponent implements OnInit {
   sections$: Observable<Section[]>;
   wishList: Product[] = [];
   activeSelection: number;
+  contact: Contact;
 
   faPlusCircle = faPlusCircle;
   faSearch = faSearch;
   faTrash = faTrash;
 
   get purchaseTotal(): number {
-    if (!this.wishList.length) return 0;
-    
+    if (!this.wishList.length) { return 0; }
+
     const subTotals = this.wishList.map(product => product.price * +product.quantity);
     const sum = (subTotal: number, currentValue: number) => subTotal + currentValue;
     return subTotals.reduce(sum);
+  }
+
+  get isPhase2$(): Observable<boolean> {
+    return this.deliveryStateService.currentPhase$.pipe(map(phase => phase === 2));
+  }
+
+  get title$(): Observable<string> {
+    return this.deliveryStateService.currentPhase$
+              .pipe(map(phase => phase === 2 ? 'Realiza tu pedido!' : 'Completa tus datos!'));
+  }
+
+  get disableContinue(): boolean {
+    return this.wishList.length === 0;
+  }
+
+  get isValidContactInfo(): boolean {
+    let isValid = true;
+    Object.keys(this.contact).forEach(key => isValid = isValid && !!this.contact[key]);
+    return isValid;
   }
 
   constructor(
@@ -37,7 +57,18 @@ export class ProductsComponent implements OnInit {
     private deliveryStateService: DeliveryStateService) { }
 
   ngOnInit(): void {
+    this.createEmptyContact();
     this.getSectionProductsList();
+  }
+
+  private createEmptyContact(): void {
+    this.contact = {
+      firstName: '',
+      lastName: '',
+      address: '',
+      mobile: '',
+      email: '',
+    };
   }
 
   private getRestaurantProductsList(): Observable<Product[]> {
@@ -62,9 +93,11 @@ export class ProductsComponent implements OnInit {
   }
 
   navigateToPhase3(): void {
-    this.deliveryStateService.selectedProducts$.next({});
     this.deliveryStateService.setPhaseTo(3);
-    this.navigationService.navigateTo('delivery');
+  }
+
+  navigateToPhase2(): void {
+    this.deliveryStateService.setPhaseTo(2);
   }
 
   navigateToPhase1(): void {
@@ -93,6 +126,10 @@ export class ProductsComponent implements OnInit {
   removeProduct(productId: number): void {
     const toRemoveProduct = (item: Product) => item.id !== productId;
     this.wishList = this.wishList.filter(toRemoveProduct);
+  }
+
+  submitDelivery(): void {
+    console.log('submitted!');
   }
 
 }

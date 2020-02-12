@@ -116,3 +116,26 @@
         }
     }
 }
+
+.contactForm {
+    background-color: $delivery-gray;
+    border: $delivery-dark-gray 2px solid;
+    padding: 15px 0;
+
+    &__label {
+        background-color: $delivery-dark-gray;
+        color: $delivery-white;
+        height: 24px;
+        padding: 0 10px;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    &__input {
+        width: 100%;
+        height: 24px;
+        margin-bottom: 15px;
+    }
+}

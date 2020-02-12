@@ -1,26 +1,46 @@
-<h2 class="list__title">Realiza tu pedido!</h2>
+<h2 class="list__title">{{ title$ | async }}</h2>
 <section class="row">
     <section class="col-6">
-        <section class="row">
-            <section class="col-3">
-                <div
-                    [ngClass]="selectionState(section.id)"
-                    (click)="showSectionProducts(section.id)"
-                    *ngFor="let section of (sections$ | async)">{{ section.name }}</div>
+        <ng-container *ngIf="(isPhase2$ | async); else phase3">
+            <section class="row">
+                <section class="col-3">
+                    <div
+                        [ngClass]="selectionState(section.id)"
+                        (click)="showSectionProducts(section.id)"
+                        *ngFor="let section of (sections$ | async)">{{ section.name }}</div>
+                </section>
+                <section class="col-9">
+                    <table class="list__products">
+                        <tr *ngFor="let product of (productsBySection$ | async)">
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price | currency }}</td>
+                            <td>
+                                <fa-icon class="list__products__search" [icon]="faSearch"></fa-icon>
+                                <fa-icon class="list__products__add" (click)="addProduct(product)" [icon]="faPlusCircle"></fa-icon>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
             </section>
-            <section class="col-9">
-                <table class="list__products">
-                    <tr *ngFor="let product of (productsBySection$ | async)">
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.price | currency }}</td>
-                        <td>
-                            <fa-icon class="list__products__search" [icon]="faSearch"></fa-icon>
-                            <fa-icon class="list__products__add" (click)="addProduct(product)" [icon]="faPlusCircle"></fa-icon>
-                        </td>
-                    </tr>
-                </table>
+        </ng-container>
+        <ng-template #phase3>
+            <section class="row contactForm">
+                <section class="col-3">
+                    <div class="contactForm__label" for="firstName">Nombre</div>
+                    <div class="contactForm__label" for="lastName">Apellido</div>
+                    <div class="contactForm__label" for="address">Direccion</div>
+                    <div class="contactForm__label" for="mobile">Telefono</div>
+                    <div class="contactForm__label" for="email">Email</div>
+                </section>
+                <section class="col-9">
+                    <div><input [(ngModel)]="contact.firstName" class="contactForm__input" type="text" placeholder="Nombre" id="firstName"></div>
+                    <div><input [(ngModel)]="contact.lastName" class="contactForm__input" type="text" placeholder="Apellido" id="lastName"></div>
+                    <div><input [(ngModel)]="contact.address" class="contactForm__input" type="text" placeholder="Direccion" id="address"></div>
+                    <div><input [(ngModel)]="contact.mobile" class="contactForm__input" type="text" placeholder="Telefono" id="mobile"></div>
+                    <div><input [(ngModel)]="contact.email" class="contactForm__input" type="text" placeholder="Email de contacto" id="email"></div>
+                </section>
             </section>
-        </section>
+        </ng-template>
     </section>
     <section class="col-6">
         <table class="list__purchase">
@@ -44,9 +64,15 @@
                 <th>{{ purchaseTotal | currency }}</th>
             </tr>
         </table>
-        <section class="d-flex flex-row-reverse mt-4">
-            <button class="btn primary" (click)="navigateToPhase3()">Continuar</button>
+        <section class="d-flex flex-row-reverse mt-4" *ngIf="(isPhase2$ | async); else phase3Buttons">
+            <button class="btn primary" (click)="navigateToPhase3()" [disabled]="disableContinue">Continuar</button>
             <button class="btn primary" (click)="navigateToPhase1()">Atras</button>
         </section>
+        <ng-template #phase3Buttons>
+            <section class="d-flex flex-row-reverse mt-4">
+                <button class="btn primary" (click)="submitDelivery()" [disabled]="!isValidContactInfo">Realizar Pedido</button>
+                <button class="btn primary" (click)="navigateToPhase2()">Atras</button>
+            </section>
+        </ng-template>
     </section>
 </section>

@@ -18,3 +18,11 @@ export interface Product {
     price: number;
     quantity?: number;
 }
+
+export interface Contact {
+    firstName: string;
+    lastName: string;
+    address: string;
+    mobile: string;
+    email: string;
+}

@@ -26,7 +26,6 @@ export class ApiService {
   getSections(sectionIds: number[]): Observable<Section[]> {
     const idParams = sectionIds.map(id => `id=${id}`).join('&');
     const url = this.buildUrl(Endpoints.Sections, idParams);
-    console.log(url);
     return this.http.get<Section[]>(url);
   }
 
@@ -41,8 +40,8 @@ export class ApiService {
   }
 
   private buildQueryParams(params: any): string {
-    if (!params) return '';
-    if (typeof params === 'string') return `?${params}`;
+    if (!params) { return ''; }
+    if (typeof params === 'string') { return `?${params}`; }
 
     let queryString = '?';
     const attachParam = (key: string) => queryString += `${key}=${params[key]}`;

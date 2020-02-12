@@ -11,7 +11,7 @@ export class HeaderComponent {
 
   get currentPhase(): Subject<number> {
     return this.deliveryStateService.currentPhase$;
-  };
+  }
 
   constructor(public deliveryStateService: DeliveryStateService) { }
 
