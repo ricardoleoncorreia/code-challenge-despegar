@@ -13,4 +13,8 @@ describe('DeliveryStateService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  describe('when phase is set to 3', () => {
+    it('should update current stored phase value to 3');
+  });
 });

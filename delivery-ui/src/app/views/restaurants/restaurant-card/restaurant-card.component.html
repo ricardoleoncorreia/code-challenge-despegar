@@ -1,7 +1,7 @@
 <article class="card">
-    <header class="card__title">{{restaurant.name}}</header>
+    <header class="card__title">{{ restaurant && restaurant.name }}</header>
     <section class="card__content">
-        <p class="card__content__text">{{restaurant.description}}</p>
+        <p class="card__content__text">{{ restaurant && restaurant.description}}</p>
         <a (click)="navigateToPhase2()" class="card__content__link">Realizar pedido</a>
     </section>
 </article>
