@@ -1,7 +1,7 @@
 const quantity = {
     restaurants: 12,
     sections: 6,
-    products: 50
+    products: 200
 };
 
 class SamplesBuilder {
