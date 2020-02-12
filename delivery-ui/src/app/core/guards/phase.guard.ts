@@ -20,7 +20,7 @@ export class PhaseGuard implements CanActivate {
       return this.deliveryStateService.selectedRestaurant$.pipe(
         map(restaurant => {
           const isRestaurantSelected = !!restaurant;
-          if (!isRestaurantSelected) { this.navigationService.navigateTo('restaurants') }
+          if (!isRestaurantSelected) { this.navigationService.navigateTo('restaurants'); }
           return isRestaurantSelected;
         }));
   }

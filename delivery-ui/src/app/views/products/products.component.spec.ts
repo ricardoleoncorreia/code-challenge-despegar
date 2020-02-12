@@ -35,7 +35,7 @@ describe('ProductsComponent', () => {
     deliveryStateServiceSpy = jasmine.createSpyObj('DeliveryStateService', ['setPhaseTo']);
     deliveryStateServiceSpy.selectedRestaurant$ = new BehaviorSubject<Restaurant>({id: 0, name: '', description: ''});
     deliveryStateServiceSpy.currentPhase$ = new BehaviorSubject<number>(1);
-  
+
     TestBed.configureTestingModule({
       declarations: [ ProductsComponent ],
       imports: [FormsModule],

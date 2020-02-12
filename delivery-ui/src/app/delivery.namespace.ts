@@ -29,7 +29,7 @@ export interface Contact {
 
 export interface Purchase {
     restaurantId: number;
-    wishList: WishItem[]
+    wishList: WishItem[];
     contact: Contact;
 }
 

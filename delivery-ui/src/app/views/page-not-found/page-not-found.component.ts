@@ -11,7 +11,7 @@ export class PageNotFoundComponent {
   constructor(private navigationService: NavigationService) { }
 
   goToRestaurantsListView(): void {
-    this.navigationService.navigateTo('restaurants')
+    this.navigationService.navigateTo('restaurants');
   }
 
 }

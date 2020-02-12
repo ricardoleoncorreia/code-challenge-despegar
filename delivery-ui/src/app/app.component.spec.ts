@@ -29,5 +29,5 @@ describe('AppComponent', () => {
 
   describe('when router changes', () => {
     it('should change body content to corresponding view');
-  })
+  });
 });

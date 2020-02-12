@@ -24,7 +24,7 @@ describe('RestaurantsComponent', () => {
     apiServiceSpy = jasmine.createSpyObj('ApiService', ['getRestaurants']);
     navigationServiceSpy = jasmine.createSpyObj('NavigationService', ['navigateTo']);
     deliveryStateServiceSpy = jasmine.createSpyObj('DeliveryStateService', ['setPhaseTo']);
-    
+
     TestBed.configureTestingModule({
       declarations: [ RestaurantsComponent ],
       imports: [FormsModule],

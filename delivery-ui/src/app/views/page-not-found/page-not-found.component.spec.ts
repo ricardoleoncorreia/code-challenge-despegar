@@ -26,7 +26,7 @@ describe('PageNotFoundComponent', () => {
   });
 
   it('should have the message \'This page was not found\'');
-  
+
   it('should unselect all phase tabs');
 
   describe('when the \'back\' button is clicked', () => {

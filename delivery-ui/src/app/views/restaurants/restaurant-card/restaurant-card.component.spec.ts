@@ -30,7 +30,7 @@ describe('RestaurantCardComponent', () => {
     it('should show the restaurant description as the description');
 
     describe('and user clicks on the link to go to phase 2', () => {
-      it('should notify the event to the parent view')
+      it('should notify the event to the parent view');
     });
   });
 });

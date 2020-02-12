@@ -55,14 +55,14 @@ export class ProductsComponent implements OnInit {
   }
 
   get purchase(): Purchase {
-    const extractQuantityAndId = (item: Product) => ({ quantity: item.quantity, productId: item.id })
+    const extractQuantityAndId = (item: Product) => ({ quantity: item.quantity, productId: item.id });
     const wishList: WishItem[] = this.wishList.map(extractQuantityAndId);
-    
+
     return {
       restaurantId: this.restaurantId,
       wishList,
       contact: this.contact
-    }
+    };
   }
 
   constructor(
@@ -91,7 +91,7 @@ export class ProductsComponent implements OnInit {
       .pipe(
         concatMap(restaurant => {
           this.restaurantId = restaurant.id;
-          return this.apiService.getProducts(restaurant.id)
+          return this.apiService.getProducts(restaurant.id);
         }));
   }
 
