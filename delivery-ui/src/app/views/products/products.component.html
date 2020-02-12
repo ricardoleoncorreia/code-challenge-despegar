@@ -70,8 +70,16 @@
         </section>
         <ng-template #phase3Buttons>
             <section class="d-flex flex-row-reverse mt-4">
-                <button class="btn primary" (click)="submitDelivery()" [disabled]="!isValidContactInfo">Realizar Pedido</button>
+                <button class="btn primary" (click)="submitDelivery(finalOrder)" [disabled]="!isValidContactInfo">Realizar Pedido</button>
                 <button class="btn primary" (click)="navigateToPhase2()">Atras</button>
+            </section>
+        </ng-template>
+        <ng-template #finalOrder>
+            <section class="modal-header">
+                Tu pedido
+            </section>
+            <section class="modal-body">
+                <pre>{{ purchase | json }}</pre>
             </section>
         </ng-template>
     </section>

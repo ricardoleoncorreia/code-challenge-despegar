@@ -13,6 +13,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { RestaurantCardComponent } from './views/restaurants/restaurant-card/restaurant-card.component';
 import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
     FontAwesomeModule
   ],
   providers: [

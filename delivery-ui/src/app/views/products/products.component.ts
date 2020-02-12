@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { DeliveryStateService } from 'src/app/core/services/delivery-state.service';
 import { Observable } from 'rxjs';
-import { Product, Section, Contact } from 'src/app/delivery.namespace';
+import { Product, Section, Contact, Purchase, WishItem } from 'src/app/delivery.namespace';
 import { ApiService } from 'src/app/core/services/api.service';
 import { concatMap, map } from 'rxjs/operators';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { faPlusCircle, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'delivery-products',
@@ -19,6 +20,8 @@ export class ProductsComponent implements OnInit {
   wishList: Product[] = [];
   activeSelection: number;
   contact: Contact;
+  modalRef: BsModalRef;
+  restaurantId: number;
 
   faPlusCircle = faPlusCircle;
   faSearch = faSearch;
@@ -51,10 +54,22 @@ export class ProductsComponent implements OnInit {
     return isValid;
   }
 
+  get purchase(): Purchase {
+    const extractQuantityAndId = (item: Product) => ({ quantity: item.quantity, productId: item.id })
+    const wishList: WishItem[] = this.wishList.map(extractQuantityAndId);
+    
+    return {
+      restaurantId: this.restaurantId,
+      wishList,
+      contact: this.contact
+    }
+  }
+
   constructor(
     private apiService: ApiService,
     private navigationService: NavigationService,
-    private deliveryStateService: DeliveryStateService) { }
+    private deliveryStateService: DeliveryStateService,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.createEmptyContact();
@@ -74,8 +89,10 @@ export class ProductsComponent implements OnInit {
   private getRestaurantProductsList(): Observable<Product[]> {
     return this.deliveryStateService.selectedRestaurant$.asObservable()
       .pipe(
-        concatMap(restaurant => this.apiService.getProducts(restaurant.id))
-      );
+        concatMap(restaurant => {
+          this.restaurantId = restaurant.id;
+          return this.apiService.getProducts(restaurant.id)
+        }));
   }
 
   private getSectionProductsList(selectedSection: number = null): void {
@@ -128,8 +145,8 @@ export class ProductsComponent implements OnInit {
     this.wishList = this.wishList.filter(toRemoveProduct);
   }
 
-  submitDelivery(): void {
-    console.log('submitted!');
+  submitDelivery(template: TemplateRef<any>): void {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

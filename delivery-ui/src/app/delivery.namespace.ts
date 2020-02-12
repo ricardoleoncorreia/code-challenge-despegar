@@ -26,3 +26,14 @@ export interface Contact {
     mobile: string;
     email: string;
 }
+
+export interface Purchase {
+    restaurantId: number;
+    wishList: WishItem[]
+    contact: Contact;
+}
+
+export interface WishItem {
+    quantity: number;
+    productId: number;
+}
