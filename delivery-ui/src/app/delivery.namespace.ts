@@ -3,3 +3,17 @@ export interface Restaurant {
     name: string;
     description: string;
 }
+
+export interface Section {
+    id: number;
+    name: string;
+}
+
+export interface Product {
+    id: number;
+    sectionId: number;
+    restaurantId: number;
+    name: string;
+    price: number;
+    quantity?: number;
+}

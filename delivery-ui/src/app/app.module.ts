@@ -12,6 +12,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { RestaurantCardComponent } from './views/restaurants/restaurant-card/restaurant-card.component';
 import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HttpHeadersInterceptor } from './core/interceptors/http-headers.interce
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpHeadersInterceptor, multi: true }

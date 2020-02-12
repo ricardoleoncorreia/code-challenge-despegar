@@ -29,7 +29,7 @@
         <delivery-restaurant-card
             *ngFor="let restaurant of restaurants$ | async"
             [restaurant]="restaurant"
-            (navigate)="navigateToPhase2()"
+            (navigate)="navigateToPhase2(restaurant)"
             class="col-3">
         </delivery-restaurant-card>
     </section>

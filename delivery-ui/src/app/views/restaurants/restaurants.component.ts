@@ -30,12 +30,8 @@ export class RestaurantsComponent implements OnInit {
     private deliveryStateService: DeliveryStateService) { }
 
   ngOnInit(): void {
-    this.setPhaseTo(1);
+    this.deliveryStateService.setPhaseTo(1);
     this.getRestaurants();
-  }
-
-  private setPhaseTo(phase: number): void {
-    this.deliveryStateService.currentPhase$.next(phase);
   }
 
   private getRestaurants(): void {
@@ -56,8 +52,9 @@ export class RestaurantsComponent implements OnInit {
     this.restaurants$ = this.apiService.getRestaurants().pipe(map(filterContent));
   }
 
-  navigateToPhase2(): void {
-    this.setPhaseTo(2);
+  navigateToPhase2(selectedRestaurant: Restaurant): void {
+    this.deliveryStateService.selectedRestaurant$.next(selectedRestaurant);
+    this.deliveryStateService.setPhaseTo(2);
     this.navigationService.navigateTo('products');
   }
 

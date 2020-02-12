@@ -1,0 +1,118 @@
+@import 'src/app/core/theme/variables';
+
+.food-section {
+    color: $delivery-green;
+    cursor: pointer;
+    border-right: 1.5px solid $delivery-dark-gray;
+    padding: 5px;
+    
+    &--selected {
+        color: $delivery-dark-gray;
+        cursor: pointer;
+        border-top: 1.5px solid $delivery-dark-gray;
+        border-left: 1.5px solid $delivery-dark-gray;
+        border-bottom: 1.5px solid $delivery-dark-gray;
+        padding: 5px;
+    }
+}
+
+.list {
+    &__title {
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    &__products {
+        width: 100%;
+
+        tr:nth-child(odd) {
+            background-color: $delivery-gray;
+        }
+
+        td {
+            border: 2px solid $delivery-dark-gray;
+            padding: 5px;
+
+            &:nth-child(1) {
+                width: 60%;
+            }
+
+            &:nth-child(2) {
+                width: 20%;
+                text-align: center;
+            }
+
+            &:nth-child(3) {
+                width: 20%;
+                text-align: center;
+            }
+        }
+
+        &__search {
+            color: $delivery-white;
+            background-color: $delivery-blue;
+            padding: 2px;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-right: 3px;
+        }
+        
+        &__add {
+            color: $delivery-white;
+            background-color: $delivery-green;
+            padding: 2px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    }
+
+    &__purchase {
+        width: 100%;
+
+        &__remove {
+            color: $delivery-white;
+            background-color: $delivery-red;
+            padding: 2px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        &__input {
+            max-width: 50px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: $delivery-gray;
+        }
+
+        td {
+            border: 2px solid $delivery-dark-gray;
+            padding: 5px;
+        }
+
+        th {
+            @extend td;
+
+            &:first-child {
+                width: 45%;
+            }
+
+            &:nth-child(2) {
+                width: 15%;
+            }
+
+            &:last-child {
+                width: 15%;
+            }
+        }
+
+        &__header {
+            background-color: $delivery-blue !important;
+            color: $delivery-white;
+        }
+
+        &__total {
+            background-color: $delivery-light-blue;
+        }
+    }
+}

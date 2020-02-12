@@ -7,3 +7,10 @@ html, body {
     margin: 0;
     height: 100%;
 }
+
+.primary {
+    background-color: $delivery-dark-gray;
+    color: $delivery-white;
+    margin: 5px;
+    padding: 5px 15px;
+}

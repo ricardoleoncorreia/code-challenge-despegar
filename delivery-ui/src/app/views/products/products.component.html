@@ -1,1 +1,52 @@
-<p>products works!</p>
+<h2 class="list__title">Realiza tu pedido!</h2>
+<section class="row">
+    <section class="col-6">
+        <section class="row">
+            <section class="col-3">
+                <div
+                    [ngClass]="selectionState(section.id)"
+                    (click)="showSectionProducts(section.id)"
+                    *ngFor="let section of (sections$ | async)">{{ section.name }}</div>
+            </section>
+            <section class="col-9">
+                <table class="list__products">
+                    <tr *ngFor="let product of (productsBySection$ | async)">
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price | currency }}</td>
+                        <td>
+                            <fa-icon class="list__products__search" [icon]="faSearch"></fa-icon>
+                            <fa-icon class="list__products__add" (click)="addProduct(product)" [icon]="faPlusCircle"></fa-icon>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+    </section>
+    <section class="col-6">
+        <table class="list__purchase">
+            <tr class="list__purchase__header">
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </tr>
+            <tr *ngFor="let wishItem of wishList">
+                <td>
+                    <fa-icon class="list__purchase__remove" (click)="removeProduct(wishItem.id)" [icon]="faTrash"></fa-icon>
+                    {{ wishItem.name }}
+                </td>
+                <td><input class="list__purchase__input" [(ngModel)]="wishItem.quantity" min="1" type="number"></td>
+                <td>{{ wishItem.price | currency }}</td>
+                <td>{{ (wishItem.quantity * wishItem.price) | currency }}</td>
+            </tr>
+            <tr class="list__purchase__total">
+                <th colspan="3"></th>
+                <th>{{ purchaseTotal | currency }}</th>
+            </tr>
+        </table>
+        <section class="d-flex flex-row-reverse mt-4">
+            <button class="btn primary" (click)="navigateToPhase3()">Continuar</button>
+            <button class="btn primary" (click)="navigateToPhase1()">Atras</button>
+        </section>
+    </section>
+</section>
