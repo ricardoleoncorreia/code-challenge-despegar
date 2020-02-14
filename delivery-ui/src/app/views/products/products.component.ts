@@ -5,7 +5,7 @@ import { Product, Section, Contact, Purchase, WishItem } from 'src/app/delivery.
 import { ApiService } from 'src/app/core/services/api.service';
 import { concatMap, map } from 'rxjs/operators';
 import { NavigationService } from 'src/app/core/services/navigation.service';
-import { faPlusCircle, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faSearch, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faSearch = faSearch;
   faTrash = faTrash;
+  faTimes = faTimes;
 
   get purchaseTotal(): number {
     if (!this.wishList.length) { return 0; }

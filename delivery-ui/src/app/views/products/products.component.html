@@ -76,7 +76,8 @@
         </ng-template>
         <ng-template #finalOrder>
             <section class="modal-header">
-                Tu pedido
+                <h4>Tu pedido</h4>
+                <fa-icon class="close" (click)="modalRef.hide()" [icon]="faTimes"></fa-icon>
             </section>
             <section class="modal-body">
                 <pre>{{ purchase | json }}</pre>

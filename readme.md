@@ -31,6 +31,37 @@ There were installed many **development dependencies** to help the coding proces
 
 Packages installed for functionality are listed below:
 
-- [Font Awesome](https://www.npmjs.com/package/@fortawesome/angular-fontawesome): provide icons.
-- [Bootstrap 4](https://www.npmjs.com/package/bootstrap): A css framework.
+- [Font Awesome](https://www.npmjs.com/package/@fortawesome/angular-fontawesome): It provides all the icons.
+- [Bootstrap 4](https://www.npmjs.com/package/bootstrap): CSS framework.
 - [ngx-bootstrap](https://www.npmjs.com/package/ngx-bootstrap): Bootstrap components for Angular.
+
+The json at the end of the application only has the minimum information to identify uniquely the restaurant, products, quantities and contact info so the backend can calculate what it requires.
+
+```
+{
+  "restaurantId": 2,
+  "wishList": [
+    {
+      "quantity": 2,
+      "productId": 101
+    },
+    {
+      "quantity": 2,
+      "productId": 67
+    },
+    {
+      "quantity": 3,
+      "productId": 70
+    }
+  ],
+  "contact": {
+    "firstName": "myFirstName",
+    "lastName": "myLastName",
+    "address": "myAddress",
+    "mobile": "myMobile",
+    "email": "myEmail"
+  }
+}
+```
+
+This representation can change depending on business requests.
