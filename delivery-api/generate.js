@@ -9,14 +9,14 @@ class SamplesBuilder {
         return n => ({
             id: n,
             name: `Restaurante ${n}`,
-            description: `Descripcion ${n}`
+            description: `Descripción ${n}`
         });
     }
 
     static Sections() {
         return n => ({
             id: n,
-            name: `Seccion ${n}`
+            name: `Sección ${n}`
         });
     }
 
