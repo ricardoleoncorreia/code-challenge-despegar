@@ -39,7 +39,6 @@ class SamplesBuilder {
 }
 
 module.exports = function() {
-    let faker = require('faker');
     let _ = require('lodash');
 
     return {
