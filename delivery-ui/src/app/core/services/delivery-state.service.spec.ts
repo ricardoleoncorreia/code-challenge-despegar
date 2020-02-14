@@ -15,6 +15,10 @@ describe('DeliveryStateService', () => {
   });
 
   describe('when phase is set to 3', () => {
-    it('should update current stored phase value to 3');
+    it('should update current stored phase value to 3', () => {
+      service.setPhaseTo(3);
+
+      service.currentPhase$.subscribe(phase => expect(phase).toBe(3));
+    });
   });
 });

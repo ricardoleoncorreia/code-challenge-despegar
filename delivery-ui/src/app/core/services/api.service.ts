@@ -6,7 +6,7 @@ import { Restaurant, Section, Product } from 'src/app/delivery.namespace';
 enum Endpoints {
   Restaurants = 'restaurants',
   Products = 'products',
-  Sections = 'Sections'
+  Sections = 'sections'
 }
 
 @Injectable({

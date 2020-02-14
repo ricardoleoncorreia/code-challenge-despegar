@@ -1,10 +1,16 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { By } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router';
+import { DebugElement } from '@angular/core';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -18,16 +24,34 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
-  it('should contain a header');
-  it('should contain a footer');
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
 
-  describe('when router changes', () => {
-    it('should change body content to corresponding view');
+  it('should contain a header at the top', () => {
+    const section: DebugElement = fixture.debugElement.query(By.css('.fixed-top'));
+
+    const element = section.query(By.directive(HeaderComponent));
+
+    expect(element).toBeTruthy();
+  });
+
+  it('should contain a footer at the bottom', () => {
+    const section: DebugElement = fixture.debugElement.query(By.css('.fixed-bottom'));
+    
+    const element = section.query(By.directive(FooterComponent));
+
+    expect(element).toBeTruthy();
+  });
+
+  it('should contain a router outlet component in the middle', () => {
+    const element = fixture.debugElement.query(By.directive(RouterOutlet));
+
+    expect(element).toBeTruthy();
   });
 });
