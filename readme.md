@@ -65,3 +65,10 @@ The json at the end of the application only has the minimum information to ident
 ```
 
 This representation can change depending on business requests.
+
+Executing the command ```ng test --code-coverage```, 32 tests will run giving the following coverage summary (at the time of presentation):
+
+- **Statements**   : 67.74% ( 105/155 )
+- **Branches**     : 58.33% ( 14/24 )
+- **Functions**    : 61.29% ( 38/62 )
+- **Lines**        : 66.67% ( 84/126 )
