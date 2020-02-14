@@ -55,6 +55,11 @@ export class ProductsComponent implements OnInit {
     return isValid;
   }
 
+  get isPurchaseEmpty(): boolean {
+    if (this.wishList.length === 0) { return true; }
+    return this.wishList.map(item => item.quantity).reduce((total, current) => total + current) > 0;
+  }
+
   get purchase(): Purchase {
     const extractQuantityAndId = (item: Product) => ({ quantity: item.quantity, productId: item.id });
     const byNotZeroQueantity = (item: WishItem) => item.quantity > 0;

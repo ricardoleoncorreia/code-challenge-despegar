@@ -65,13 +65,21 @@
             </tr>
         </table>
         <section class="d-flex flex-row-reverse mt-4" *ngIf="(isPhase2$ | async); else phase3Buttons">
-            <button class="btn primary" (click)="navigateToPhase3()" [disabled]="disableContinue">Continuar</button>
-            <button class="btn primary" (click)="navigateToPhase1()">Atras</button>
+            <button
+                class="btn primary"
+                (click)="navigateToPhase3()"
+                [ngClass]="{'primary--disabled': disableContinue || !isPurchaseEmpty}"
+                [disabled]="disableContinue || !isPurchaseEmpty">Continuar</button>
+            <button class="btn primary" (click)="navigateToPhase1()">Atrás</button>
         </section>
         <ng-template #phase3Buttons>
             <section class="d-flex flex-row-reverse mt-4">
-                <button class="btn primary" (click)="submitDelivery(finalOrder)" [disabled]="!isValidContactInfo">Realizar Pedido</button>
-                <button class="btn primary" (click)="navigateToPhase2()">Atras</button>
+                <button
+                    class="btn primary"
+                    (click)="submitDelivery(finalOrder)"
+                    [ngClass]="{'primary--disabled': !isValidContactInfo || !isPurchaseEmpty}"
+                    [disabled]="!isValidContactInfo || !isPurchaseEmpty">Realizar Pedido</button>
+                <button class="btn primary" (click)="navigateToPhase2()">Atrás</button>
             </section>
         </ng-template>
         <ng-template #finalOrder>
