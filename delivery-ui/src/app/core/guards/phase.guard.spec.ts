@@ -46,22 +46,22 @@ describe('PhaseGuard', () => {
       };
       deliveryStateServiceSpy.selectedRestaurant$.next(newRestaurant);
 
-      const isActivated$ = <Observable<boolean>> guard.canActivate(null, null);
-      
+      const isActivated$ = guard.canActivate(null, null) as Observable<boolean>;
+
       isActivated$.subscribe(isActivated => expect(isActivated).toBeTruthy());
     });
   });
 
   describe('when there is NO restaurant selected', () => {
     it('should NOT activate view', () => {
-      const isActivated$ = <Observable<boolean>> guard.canActivate(null, null);
-      
-      isActivated$.subscribe(isActivated => expect(isActivated).toBeFalsy());
+      const isActivated$ = guard.canActivate(null, null) as Observable<boolean>;
+
+      isActivated$.subscribe(isActivated => expect(isActivated).toBeFalse());
     });
 
     it('should redirect to restaurants view', () => {
-      const isActivated$ = <Observable<boolean>> guard.canActivate(null, null);
-      
+      const isActivated$ = guard.canActivate(null, null) as Observable<boolean>;
+
       isActivated$.subscribe(_ => expect(navigationServiceSpy.navigateTo).toHaveBeenCalledWith('restaurants'));
     });
   });

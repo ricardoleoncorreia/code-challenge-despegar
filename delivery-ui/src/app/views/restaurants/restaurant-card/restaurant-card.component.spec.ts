@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RestaurantCardComponent } from './restaurant-card.component';
-import { By, BrowserTransferStateModule } from '@angular/platform-browser';
+import { By } from '@angular/platform-browser';
 import { Restaurant } from 'src/app/delivery.namespace';
 import { DebugElement } from '@angular/core';
 
@@ -36,9 +36,9 @@ describe('RestaurantCardComponent', () => {
         name: 'Mocked Restaurant',
         description: 'Mocked Description'
       };
-      
+
       component.restaurant = mockedRestaurant;
-      
+
       fixture.detectChanges();
     });
 

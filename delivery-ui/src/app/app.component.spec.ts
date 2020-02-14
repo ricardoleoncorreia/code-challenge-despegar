@@ -43,15 +43,15 @@ describe('AppComponent', () => {
 
   it('should contain a footer at the bottom', () => {
     const section: DebugElement = fixture.debugElement.query(By.css('.fixed-bottom'));
-    
+
     const element = section.query(By.directive(FooterComponent));
 
-    expect(element).toBeTruthy();
+    expect(element).toBeDefined();
   });
 
   it('should contain a router outlet component in the middle', () => {
     const element = fixture.debugElement.query(By.directive(RouterOutlet));
 
-    expect(element).toBeTruthy();
+    expect(element).toBeDefined();
   });
 });

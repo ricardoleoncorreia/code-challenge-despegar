@@ -14,7 +14,7 @@ describe('PageNotFoundComponent', () => {
 
   let navigationServiceSpy: {
     navigateTo: jasmine.Spy;
-  }
+  };
   let deliveryStateServiceSpy: {
     currentPhase$: BehaviorSubject<number>;
   };
