@@ -57,7 +57,10 @@ export class ProductsComponent implements OnInit {
 
   get purchase(): Purchase {
     const extractQuantityAndId = (item: Product) => ({ quantity: item.quantity, productId: item.id });
-    const wishList: WishItem[] = this.wishList.map(extractQuantityAndId);
+    const byNotZeroQueantity = (item: WishItem) => item.quantity > 0;
+    const wishList: WishItem[] = this.wishList
+                                    .map(extractQuantityAndId)
+                                    .filter(byNotZeroQueantity);
 
     return {
       restaurantId: this.restaurantId,
