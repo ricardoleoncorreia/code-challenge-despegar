@@ -42,8 +42,8 @@ export class RestaurantsComponent implements OnInit {
     const { name, description } = this.filterTerms;
 
     const byNameAndDescription = (restaurant: Restaurant) => {
-      const includesName = restaurant.name.includes(name);
-      const includesDescription = restaurant.description.includes(description);
+      const includesName = restaurant.name.toLowerCase().includes(name.toLowerCase());
+      const includesDescription = restaurant.description.toLowerCase().includes(description.toLowerCase());
       return includesName && includesDescription;
     };
 
